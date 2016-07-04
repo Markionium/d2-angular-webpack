@@ -13,18 +13,18 @@ if (process.env.NODE_ENV !== 'production') {
 import angular from 'angular';
 import { init, config, getManifest } from 'd2/lib/d2';
 
-import App from './app/app';
+import app from './app/app';
 import './app/app.scss';
 
 function startApp(d2) {
-    // Create an angular module that provides and initialized d2 to the application
-    // This module is specified as a dependency of the app in app/app.js
-    angular.module('d2', []).factory('d2', () => d2);
+    // Create a factory that provides the initialized d2 to the application
+    app.factory('d2', () => d2);
 
     // Bootstrap the app with the d2 module
     angular.bootstrap(document.querySelector('body'), ['d2-example']);
 }
 
+// TODO: You could render some sort of loading dialog here, as the bootstrap of the app is delayed
 
 // Load the application manifest to be able to determine the location of the Api
 // After we have the location of the api, we can set it onto the d2.config object
