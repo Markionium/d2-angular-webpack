@@ -30,7 +30,7 @@ function log(req, res, opt) {
 const webpackConfig = {
     context: __dirname,
     contentBase: __dirname,
-    entry: './src/app.js',
+    entry: './src/init.js',
     devtool: 'source-map',
     output: {
         path: __dirname + '/build',
@@ -43,9 +43,6 @@ const webpackConfig = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel',
-                query: {
-                    presets: ['es2015', 'stage-0', 'react'],
-                },
             },
             {
                 test: /\.css$/,
